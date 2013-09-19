@@ -1,0 +1,37 @@
+<ipojo xmlns:qos="br.ufpe.cin.dsoa">
+     <component classname="br.com.homebroker.bb.client.HomebrokerClient"
+     			id="HomebrokerClient"
+             	name="HomebrokerClient">
+                
+           <callback transition="validate" method="start" />
+           <callback transition="invalidate" method="stop" />
+
+           <qos:requires field="homebroker">
+                <constraint attribute="qos.AvgResponseTime" 
+                 		operation="priceAlert"  
+                 	  	expression="LT" 
+                 	 	threashold="800" 
+                 	 	weight="1" />
+                 	 						  
+				<constraint attribute="qos.Availability" 
+						  expression="GT" 
+						  threashold="95" 
+						  weight="2" />
+                 	  			
+           </qos:requires>
+    </component>
+    
+
+    <!--  <component classname="br.com.homebroker.bb.client.HomebrokerClientv2"
+     			id="HomebrokerClientv2"
+             	name="HomebrokerClientv2">
+                
+           <callback transition="validate" method="start" />
+           <callback transition="invalidate" method="stop" />
+
+           <requires field="homebroker" />
+    </component> -->
+
+    <instance component="HomebrokerClient" name="HomebrokerClient01" />
+    <!-- <instance component="HomebrokerClientv2" name="Homebroker Client 02" /> -->
+</ipojo>

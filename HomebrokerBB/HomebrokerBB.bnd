@@ -1,0 +1,2 @@
+Private-Package: br.com.homebroker.bb
+--Bundle-Activator: br.com.homebroker.bb.HomebrokerBB

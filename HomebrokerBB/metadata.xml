@@ -1,0 +1,23 @@
+<ipojo xmlns:qos="br.ufpe.cin.dsoa">
+	<component 
+		classname="br.com.homebroker.bb.HomebrokerBB"
+		name="Homebroker-BB">
+
+		<callback transition="validate" method="start" />
+		<callback transition="invalidate" method="stop" />
+
+		<provides>
+			<property name="service.managed" 						 						value="true"	                  				type="java.lang.String"/>
+			<property name="service.pid" 						 					value="Homebroker-BB"	                		type="java.lang.String"/>
+			<property name="service.description"				 					value="Homebroker do Banco do Brasil"			type="java.lang.String"/>
+			<property name="constraint.operation.qos.AvgResponseTime.priceAlert.LT" value="190"                         			type="java.lang.Double"/>
+			<property name="constraint.service.qos.Availability.GT" 				value="90"                         				type="java.lang.Double"/>
+			<property name="org.apache.cxf.ws.address"   							value="http://localhost:8089/homeBrokerBB"  	type="java.lang.String"/>
+		</provides>	
+
+	</component>
+
+	<instance component="Homebroker-BB" name="Homebroker-instance" >
+		<property name="service.pid" 						 		value="Homebroker-instance"	                  				type="java.lang.String"/>
+	</instance>
+</ipojo>
