@@ -79,15 +79,15 @@ public class HomebrokerClientv2 implements EventHandler {
 	
 		Hashtable p = new Hashtable();
 		p.put(EventConstants.EVENT_TOPIC, new String[] {"org/osgi/service/monitor"});
-		p.put(EventConstants.EVENT_FILTER, "(mon.listener.id=test.dsoa.job)");
+		//p.put(EventConstants.EVENT_FILTER, "(mon.listener.id=test.dsoa.job)");
 		
 		ctx.registerService(EventHandler.class.getName(), this, p);
 		
-		MonitoringJob job  = this.monitorAdmin.startScheduledJob(
+		/*MonitoringJob job  = this.monitorAdmin.startScheduledJob(
 			"test.dsoa.job",
 			new String[] {"hb-m/priceAlert.AvgResponseTime"}, 
 			2, 
-			0);
+			0);*/
 	}
 	
 	private void subscribeEsper() {
@@ -194,7 +194,7 @@ public class HomebrokerClientv2 implements EventHandler {
 		String value = (String) event.getProperty("mon.statusvariable.value");
 		String name = (String) event.getProperty("mon.statusvariable.name");
 		
-		System.out.println(String.format("%s = %s", name, value));
+		System.out.println(String.format("%s => %s", name, value));
 		
 	}
 }
