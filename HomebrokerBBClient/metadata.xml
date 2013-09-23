@@ -22,16 +22,20 @@
     </component>
     
 
-    <!--  <component classname="br.com.homebroker.bb.client.HomebrokerClientv2"
+    <component classname="br.com.homebroker.bb.client.HomebrokerClientv2"
      			id="HomebrokerClientv2"
              	name="HomebrokerClientv2">
                 
+           <requires field="epService" />
+           <requires field="eventTypeCatalog" />
+           <requires field="monitorAdmin" />
+           
            <callback transition="validate" method="start" />
            <callback transition="invalidate" method="stop" />
 
            <requires field="homebroker" />
-    </component> -->
+    </component> 
 
-    <instance component="HomebrokerClient" name="HomebrokerClient01" />
-    <!-- <instance component="HomebrokerClientv2" name="Homebroker Client 02" /> -->
+    <!-- <instance component="HomebrokerClient" name="HomebrokerClient01" /> -->
+    <instance component="HomebrokerClientv2" name="Homebroker Client 02" /> 
 </ipojo>

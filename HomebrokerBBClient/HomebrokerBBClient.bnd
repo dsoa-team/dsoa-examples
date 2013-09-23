@@ -1,1 +1,2 @@
 Private-Package: br.com.homebroker.bb.client
+DynamicImport-Package: *

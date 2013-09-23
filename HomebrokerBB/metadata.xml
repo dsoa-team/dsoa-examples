@@ -7,7 +7,7 @@
 		<callback transition="invalidate" method="stop" />
 
 		<provides>
-			<property name="service.managed" 						 						value="true"	                  				type="java.lang.String"/>
+			<property name="service.managed" 						 				value="true"	                  				type="java.lang.String"/>
 			<property name="service.pid" 						 					value="Homebroker-BB"	                		type="java.lang.String"/>
 			<property name="service.description"				 					value="Homebroker do Banco do Brasil"			type="java.lang.String"/>
 			<property name="constraint.operation.qos.AvgResponseTime.priceAlert.LT" value="190"                         			type="java.lang.Double"/>
@@ -18,6 +18,6 @@
 	</component>
 
 	<instance component="Homebroker-BB" name="Homebroker-instance" >
-		<property name="service.pid" 						 		value="Homebroker-instance"	                  				type="java.lang.String"/>
+		<property name="service.pid" 						 		value="hb"	                  				type="java.lang.String"/>
 	</instance>
 </ipojo>
