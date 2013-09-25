@@ -60,6 +60,11 @@ public class HomebrokerBB implements Homebroker, InformationProvider {
 	public double priceAlert(String address, Stock stock, double lowerThreshold,
 			double higherThreshold) {
 		System.out.println("HOMEBROKERBB: priceAlert");
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return 1.0;
 	}
 

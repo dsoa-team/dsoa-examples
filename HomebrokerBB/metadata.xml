@@ -10,8 +10,8 @@
 			<property name="service.managed" 						 				value="true"	                  				type="java.lang.String"/>
 			<property name="service.pid" 						 					value="Homebroker-BB"	                		type="java.lang.String"/>
 			<property name="service.description"				 					value="Homebroker do Banco do Brasil"			type="java.lang.String"/>
-			<property name="constraint.operation.qos.AvgResponseTime.priceAlert.LT" value="190"                         			type="java.lang.Double"/>
-			<property name="constraint.service.qos.Availability.GT" 				value="90"                         				type="java.lang.Double"/>
+			<property name="constraint.operation.qos.AvgResponseTime.priceAlert.LE" value="190"                         			type="java.lang.Double"/>
+			<property name="constraint.service.qos.Availability.GE" 				value="90"                         				type="java.lang.Double"/>
 			<property name="org.apache.cxf.ws.address"   							value="http://localhost:8089/homeBrokerBB"  	type="java.lang.String"/>
 		</provides>	
 
