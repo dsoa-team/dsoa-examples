@@ -10,7 +10,7 @@
                 <constraint attribute="qos.AvgResponseTime" 
                  		operation="priceAlert"  
                  	  	expression="LE" 
-                 	 	threashold="800" 
+                 	 	threashold="200" 
                  	 	weight="1" />
                  	 						  
 				<constraint attribute="qos.Availability" 
