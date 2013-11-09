@@ -19,6 +19,7 @@
 						  weight="2" />
 						  
 				  <constraint attribute="qos.BusinessException" 
+				  		  operation="priceAlert"
 						  expression="LT" 
 						  threashold="1" 
 						  weight="4" />

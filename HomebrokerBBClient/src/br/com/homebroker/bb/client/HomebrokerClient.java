@@ -41,9 +41,9 @@ public class HomebrokerClient implements Runnable {
 			try {
 				System.out.println(homebroker.priceAlert("ENDERECO", Stock.PETR3, 0, 1000));
 			}catch (OutOfScheduleException e){
-				System.out.println("Out of Schedule");
+				System.err.println("Exception: Out of Schedule");
 			} catch (Exception e) {
-				System.out.println("INVALID INVOCATION " + e.getClass());
+				System.err.println("INVALID INVOCATION " + e.getClass());
 			}
 			try {
 				Thread.sleep(500);
