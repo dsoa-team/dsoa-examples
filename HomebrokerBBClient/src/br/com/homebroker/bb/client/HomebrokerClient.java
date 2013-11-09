@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.osgi.framework.BundleContext;
 
+import br.com.bb.exception.OutOfScheduleException;
 import br.com.bb.homebroker.Homebroker;
 import br.com.bb.stock.Stock;
 
@@ -35,12 +36,14 @@ public class HomebrokerClient implements Runnable {
 
 		System.out.println("===================== PRICE ALERT ==================================");
 
-		for (int i = 1; i < 50; i++) {
+		for (int i = 1; i < 100; i++) {
 			System.out.print("priceAlert " + i + " = ");
 			try {
 				System.out.println(homebroker.priceAlert("ENDERECO", Stock.PETR3, 0, 1000));
+			}catch (OutOfScheduleException e){
+				System.out.println("Out of Schedule");
 			} catch (Exception e) {
-				System.out.println("INVALID INVOCATION");
+				System.out.println("INVALID INVOCATION " + e.getClass());
 			}
 			try {
 				Thread.sleep(500);

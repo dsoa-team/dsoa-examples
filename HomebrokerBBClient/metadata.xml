@@ -17,6 +17,11 @@
 						  expression="GE" 
 						  threashold="75" 
 						  weight="2" />
+						  
+				  <constraint attribute="qos.BusinessException" 
+						  expression="LT" 
+						  threashold="1" 
+						  weight="4" />
                  	  			
            </qos:requires>
     </component>
