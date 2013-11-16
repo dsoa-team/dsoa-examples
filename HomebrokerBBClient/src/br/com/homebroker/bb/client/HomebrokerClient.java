@@ -34,24 +34,20 @@ public class HomebrokerClient implements Runnable {
 	@Override
 	public void run() {
 
-		System.out.println("===================== PRICE ALERT ==================================");
-
-		for (int i = 1; i < 100; i++) {
+		for (int i = 1; i < 50; i++) {
 			System.out.print("priceAlert " + i + " = ");
 			try {
 				System.out.println(homebroker.priceAlert("ENDERECO", Stock.PETR3, 0, 1000));
 			}catch (OutOfScheduleException e){
-				System.err.println("Exception: Out of Schedule");
+				System.err.println("Exception: "  + e.getClass());
 			} catch (Exception e) {
 				System.err.println("INVALID INVOCATION " + e.getClass());
 			}
 			try {
-				Thread.sleep(500);
+				Thread.sleep(300);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("================================================================");
-
 	}
 }
