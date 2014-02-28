@@ -13,7 +13,7 @@ public class HomebrokerClient implements Runnable {
 	private Homebroker homebroker;
 	Thread invocations;
 	boolean started = false;
-	
+
 	public HomebrokerClient(BundleContext ctx) throws SecurityException, IOException {
 		System.out.println("#### Constructor");
 		invocations = new Thread(this);
@@ -21,7 +21,7 @@ public class HomebrokerClient implements Runnable {
 
 	public void start() throws InterruptedException {
 		System.out.println("==>> STARTING...");
-		if(!started){
+		if (!started) {
 			invocations.start();
 			started = true;
 		}
@@ -34,14 +34,23 @@ public class HomebrokerClient implements Runnable {
 	@Override
 	public void run() {
 
-		for (int i = 1; i < 50; i++) {
-			System.out.print("priceAlert " + i + " = ");
+		long start = System.currentTimeMillis();
+		boolean request = true;
+		int count = 0;
+		int businessExceptions = 0;
+		int avaiExcept = 0;
+		while (request) {
 			try {
-				System.out.println(homebroker.priceAlert("ENDERECO", Stock.PETR3, 0, 1000));
-			}catch (OutOfScheduleException e){
-				System.err.println("Exception: "  + e.getClass());
+				count++;
+				homebroker.priceAlert("ENDERECO", Stock.PETR3, 0, 1000);
+			} catch (OutOfScheduleException e) {
+				businessExceptions ++;
 			} catch (Exception e) {
-				System.err.println("INVALID INVOCATION " + e.getClass());
+				avaiExcept ++;
+			}
+			long time = System.currentTimeMillis();
+			if (time - start >= 120000) {
+				request = false;
 			}
 			try {
 				Thread.sleep(300);
@@ -49,5 +58,9 @@ public class HomebrokerClient implements Runnable {
 				e.printStackTrace();
 			}
 		}
+		
+		System.err.println("Total requests: " + count);
+		System.err.println("Total bussinesException: " + businessExceptions);
+		System.err.println("Total availabilityException: " + avaiExcept);
 	}
 }
