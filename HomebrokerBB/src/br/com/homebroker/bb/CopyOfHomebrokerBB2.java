@@ -282,4 +282,10 @@ public class CopyOfHomebrokerBB2 implements Homebroker {
 			}
 		}
 	}
+
+	@Override
+	public double getCurrentPrice(Stock stock) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

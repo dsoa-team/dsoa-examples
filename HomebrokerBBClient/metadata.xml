@@ -6,8 +6,7 @@
            <callback transition="validate" method="start" />
            <callback transition="invalidate" method="stop" />
 
-           <qos:requires field="homebroker">
-           </qos:requires>
+           <requires field="homebroker"/>
     </component>
     <instance component="HomebrokerClient" name="HomebrokerClient01" />
 </ipojo>

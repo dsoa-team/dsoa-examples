@@ -1,23 +1,74 @@
-<ipojo xmlns:qos="br.ufpe.cin.dsoa">
-	<component 
-		classname="br.com.homebroker.bb.HomebrokerBB"
+<ipojo xmlns:dsoa="br.ufpe.cin.dsoa">
+	
+	<dsoa-component name="Homebroker-BB" classname="br.com.homebroker.bb.HomebrokerBB">
+	
+		<callback transition="validate" method="start" />
+		<callback transition="invalidate" method="stop" />
+
+		<dsoa:provides portName="homebrokerBB" portType="hombroker">
+			<constraint attribute="qos.AvgResponseTime" operation="getCotation"
+				expression="LE" threashold="200" weight="1" />
+		</dsoa:provides>
+		
+		<dsoa:requires portName="provider" portType="homebroker">
+			<constraint attribute="qos.AvgResponseTime" operation="getCotation"
+				expression="LE" threashold="200" weight="1" />
+		</dsoa:requires>
+		
+		<!-- <dsoa:requires field="provider">
+			<constraint attribute="qos.AvgResponseTime" operation="getCotation"
+				expression="LE" threashold="200" weight="1" />
+
+		</dsoa:requires> -->
+		
+<!-- 				<dsoa:provides name="homebrokerBB">
+			<property name="service.pid" value="Homebroker-BB" type="java.lang.String" />
+			<property name="service.managed" value="true" type="java.lang.String" />
+			<property name="service.description" value="Homebroker do Banco do Brasil" type="java.lang.String" />
+			<property name="constraint.operation.qos.AvgResponseTime.getCurrentPrice.LE" 
+				value="900" type="java.lang.Double" />
+			<property name="constraint.service.qos.Availability.GE"
+				value="90" type="java.lang.Double" />
+			<property name="org.apache.cxf.ws.address" value="http://localhost:9096/homeBrokerBB"
+				type="java.lang.String" />
+			<property name="service.exported.interfaces" value="*" type="java.lang.String" />
+			<property name="service.exported.configs" value="org.apache.cxf.ws" type="java.lang.String" />
+			
+		</dsoa:provides> -->
+
+
+	</dsoa-component>
+<!-- 	<component classname="br.com.homebroker.bb.HomebrokerBB"
 		name="Homebroker-BB">
 
 		<callback transition="validate" method="start" />
 		<callback transition="invalidate" method="stop" />
 
 		<provides>
-			<property name="service.managed" 						 				value="true"	                  				type="java.lang.String"/>
-			<property name="service.pid" 						 					value="Homebroker-BB"	                		type="java.lang.String"/>
-			<property name="service.description"				 					value="Homebroker do Banco do Brasil"			type="java.lang.String"/>
-			<property name="constraint.operation.qos.AvgResponseTime.priceAlert.LE" value="190"                         			type="java.lang.Double"/>
-			<property name="constraint.service.qos.Availability.GE" 				value="90"                         				type="java.lang.Double"/>
-			<property name="org.apache.cxf.ws.address"   							value="http://localhost:8089/homeBrokerBB"  	type="java.lang.String"/>
-		</provides>	
+			<property name="service.pid" value="Homebroker-BB" type="java.lang.String" />
+			<property name="service.managed" value="true" type="java.lang.String" />
+			<property name="service.description" value="Homebroker do Banco do Brasil" type="java.lang.String" />
+			<property name="constraint.operation.qos.AvgResponseTime.getCurrentPrice.LE" 
+				value="900" type="java.lang.Double" />
+			<property name="constraint.service.qos.Availability.GE"
+				value="90" type="java.lang.Double" />
+			<property name="org.apache.cxf.ws.address" value="http://localhost:9096/homeBrokerBB"
+				type="java.lang.String" />
+			<property name="service.exported.interfaces" value="*" type="java.lang.String" />
+			<property name="service.exported.configs" value="org.apache.cxf.ws" type="java.lang.String" />
+			
+		</provides>
 
-	</component>
+		<qos:requires field="provider">
+			<constraint attribute="qos.AvgResponseTime" operation="getCotation"
+				expression="LE" threashold="200" weight="1" />
 
-	<instance component="Homebroker-BB" name="Homebroker-instance" >
-		<property name="service.pid" 						 		value="hb"	                  				type="java.lang.String"/>
+
+		</qos:requires>
+
+	</component> -->
+
+	<instance component="Homebroker-BB" name="Homebroker-BB-Instance">
+		<property name="service.pid" value="hb" type="java.lang.String" />
 	</instance>
 </ipojo>

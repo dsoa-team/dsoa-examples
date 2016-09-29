@@ -1,0 +1,75 @@
+<composition id="" name="" class="br.com.homebroker.bb.HomebrokerBB">
+	<provides>
+		<service id="" interface="InformationProvider">
+			<manager name="dsoa-v1.1">
+				<dsoa-provided:sla>
+					<sla>
+						<slo attribute="AvgResponseTime" 
+						     value="150" 
+						     expression="LT" 
+						     operation="getCotation" />
+							 
+						<slo attribute="MaxResponseTime" 
+						     value="500" 
+						     expression="LT" 
+						     operation="getCotation" />
+						     
+						<slo attribute="Availability" 
+							 value="99" 
+							 expression="GT" />
+					</sla>
+				</dsoa-provided:sla>
+			</manager>
+		</service>
+	</provides>
+	
+	<requires>
+		<service interface="InformationProvider">
+			<manager name="wsag-manager">
+				<wsag-manager:configuration>
+					<aggreement name="">
+						<context>
+							<expiration></expiration>
+						</context>
+						
+						<terms>
+							<term attribute="AvgResponseTime" 
+								 value="150" 
+								 expression="LT" 
+								 operation="getCotation" 
+								 weight="1"/>
+							<term attribute="Availability" 
+								 value="99" 
+								 expression="GT" 
+								 weight="1"/>
+						</terms>
+					</aggreement>
+					<negotiator name="" >
+					</negotiator>
+						
+					<evaluator name="">
+					</evaluator>
+						
+					<terminator name="">
+					</terminator>
+					
+				</wsag-manager:configuration>
+			</manager>
+		</service>
+		
+		<service interface="Broker">
+			<manager name="ipojo"/>
+		</service>
+		
+		<service interface="Broker">
+			<manager name="dsoa-v1.0">
+				<dsoa:requirements>
+					<qos attribute="ResponseTime" expression="LT" value="40" operation="getCotation"  weight="1" />
+	    			<qos attribute="Throughput" expression="GT" value="8" operation="getCotation" weight="2" />
+					<qos attribute="Availability" expression="GT" value="90" weight="1" />
+				</dsoa:requirements>
+			</manager>
+		</service>
+	</requires>
+	
+</composition>

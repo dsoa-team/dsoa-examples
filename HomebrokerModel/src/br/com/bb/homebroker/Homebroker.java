@@ -5,6 +5,8 @@ import br.com.bb.stock.Stock;
 
 public interface Homebroker {
 
+	public double getCurrentPrice(Stock stock);
+	
 	public double priceAlert(String address, Stock stock, double lowerThreshold,
 			double higherThreshold) throws OutOfScheduleException;
 
