@@ -13,7 +13,7 @@
 				expression="LE" threashold="200" weight="1" />
 		</dsoa:provides> -->
 		
-		<dsoa:requires portName="provider" portType="homebroker">
+		<dsoa:requires name="provider" >
 			<constraint attribute="qos.AvgResponseTime" operation="getCotation"
 				expression="LE" threashold="200" weight="1" />
 		</dsoa:requires>
