@@ -20,10 +20,8 @@ public class HomebrokerClient implements Runnable {
 	private int errorsCounter = 0;
 	
 	private Logger invocationLogger;
-	private FileHandler invocationLogFile;
 	
 	private Logger adaptationLogger;
-	private FileHandler adaptationLogFile;	
 	
 	private Thread thread;
 	private volatile boolean started = false;
@@ -45,11 +43,11 @@ public class HomebrokerClient implements Runnable {
 		invocationLogger = Logger.getLogger("InvocationLogger");
 		adaptationLogger = Logger.getLogger("AdaptationLogger");
 		try {
-			invocationLogFile = new FileHandler("invocation.log");
+			FileHandler invocationLogFile = new FileHandler("invocation.log");
 			invocationLogFile.setFormatter(f);
 			invocationLogger.addHandler(invocationLogFile);
 			
-			adaptationLogFile = new FileHandler("adaptation.log");
+			FileHandler adaptationLogFile = new FileHandler("adaptation.log");
 			adaptationLogFile.setFormatter(f);
 			adaptationLogger.addHandler(adaptationLogFile);
 		} catch (SecurityException e) {

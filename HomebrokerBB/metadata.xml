@@ -5,10 +5,13 @@
 		<callback transition="validate" method="start" />
 		<callback transition="invalidate" method="stop" />
 
+		<provides />
+<!-- 		
+		//TODO QUANDO O PROVIDES HANDLER ESTIVER PRONTO!
 		<dsoa:provides portName="homebrokerBB" portType="hombroker">
 			<constraint attribute="qos.AvgResponseTime" operation="getCotation"
 				expression="LE" threashold="200" weight="1" />
-		</dsoa:provides>
+		</dsoa:provides> -->
 		
 		<dsoa:requires portName="provider" portType="homebroker">
 			<constraint attribute="qos.AvgResponseTime" operation="getCotation"
