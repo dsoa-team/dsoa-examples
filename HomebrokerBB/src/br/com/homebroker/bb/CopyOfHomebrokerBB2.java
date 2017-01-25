@@ -53,7 +53,7 @@ public class CopyOfHomebrokerBB2 implements Homebroker {
 		};
 		
 		
-		this.fh = new FileHandler("logResponseTimeClient.txt");
+		this.fh = new FileHandler("logs/logResponseTimeClient.txt");
 		this.fh.setFormatter(this.formatter);
 		this.fh.setFilter(new Filter() {
 			public boolean isLoggable(LogRecord record) {

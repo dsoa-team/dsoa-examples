@@ -43,11 +43,11 @@ public class HomebrokerClient implements Runnable {
 		invocationLogger = Logger.getLogger("InvocationLogger");
 		adaptationLogger = Logger.getLogger("AdaptationLogger");
 		try {
-			FileHandler invocationLogFile = new FileHandler("invocation.log");
+			FileHandler invocationLogFile = new FileHandler("logs/app" + this.getClass().getCanonicalName() + "-invocations" + ".log");
 			invocationLogFile.setFormatter(f);
 			invocationLogger.addHandler(invocationLogFile);
 			
-			FileHandler adaptationLogFile = new FileHandler("adaptation.log");
+			FileHandler adaptationLogFile = new FileHandler("logs/app" + this.getClass().getCanonicalName() + "-adaptations" +".log");
 			adaptationLogFile.setFormatter(f);
 			adaptationLogger.addHandler(adaptationLogFile);
 		} catch (SecurityException e) {
